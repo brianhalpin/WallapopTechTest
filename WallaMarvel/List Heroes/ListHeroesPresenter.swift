@@ -25,10 +25,21 @@ final class ListHeroesPresenter: ListHeroesPresenterProtocol {
     // MARK: UseCases
     
     func getHeroes() {
-        getHeroesUseCase.execute { characterDataContainer in
-            print("Characters \(characterDataContainer.characters)")
-            self.ui?.update(heroes: characterDataContainer.characters)
+        Task {
+            do {
+                let container = try await getHeroesUseCase.execute()
+                let characters = container.characters
+                
+                // Using the MainActor here ensures the UI activity will get executed on the main thread.
+                await MainActor.run {
+                    print("Characters \(characters)")
+                    self.ui?.update(heroes: characters)
+                }
+            } catch {
+                print("Failed to load heroes: \(error)")
+            }
         }
     }
+
 }
 

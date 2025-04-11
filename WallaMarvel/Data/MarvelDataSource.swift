@@ -1,17 +1,18 @@
 import Foundation
 
 protocol MarvelDataSourceProtocol {
-    func getHeroes(completionBlock: @escaping (CharacterDataContainer) -> Void)
+    func getHeroes() async throws -> CharacterDataContainer
 }
 
 final class MarvelDataSource: MarvelDataSourceProtocol {
     private let apiClient: APIClientProtocol
-    
+
     init(apiClient: APIClientProtocol = APIClient()) {
         self.apiClient = apiClient
     }
-    
-    func getHeroes(completionBlock: @escaping (CharacterDataContainer) -> Void) {
-        return apiClient.getHeroes(completionBlock: completionBlock)
+
+    func getHeroes() async throws -> CharacterDataContainer {
+        try await apiClient.getHeroes(offset: 0, limit: 20)
     }
 }
+
