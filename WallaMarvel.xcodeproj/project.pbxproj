@@ -30,6 +30,13 @@
 		AF99BE8C8FC1DE4178D39965 /* Pods_WallaMarvel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27133A00A66EF91557A95FF4 /* Pods_WallaMarvel.framework */; };
 		B44173F44B16313EF24D8ED3 /* Pods_WallaMarvel_WallaMarvelUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9A318E79FD19C1EE3A972A3 /* Pods_WallaMarvel_WallaMarvelUITests.framework */; };
 		CEEB6D6D448C150745880569 /* Pods_WallaMarvelTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46D0BB56F90DDBDFBE6933F7 /* Pods_WallaMarvelTests.framework */; };
+		D3110AED2DA9B2C7005F389B /* HeroDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3110AEC2DA9B2C6005F389B /* HeroDetailView.swift */; };
+		D3110B6B2DABC2F6005F389B /* APIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3110B6A2DABC2F6005F389B /* APIConstants.swift */; };
+		D3110B702DABC64B005F389B /* CharacterPreviewData.json in Resources */ = {isa = PBXBuildFile; fileRef = D3110B6F2DABC64B005F389B /* CharacterPreviewData.json */; };
+		D3110B712DABC64B005F389B /* CharacterPreviewData.json in Resources */ = {isa = PBXBuildFile; fileRef = D3110B6F2DABC64B005F389B /* CharacterPreviewData.json */; };
+		D3110B782DABC6E0005F389B /* 3d-man.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D3110B772DABC6E0005F389B /* 3d-man.jpg */; };
+		D3110B792DABC6E0005F389B /* 3d-man.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D3110B772DABC6E0005F389B /* 3d-man.jpg */; };
+		D3110B7B2DABCA8E005F389B /* CharacterDataModel+Preview.swift .swift in Sources */ = {isa = PBXBuildFile; fileRef = D3110B7A2DABCA8E005F389B /* CharacterDataModel+Preview.swift .swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -82,6 +89,11 @@
 		7E001A2658509E1DA6A8286B /* Pods-WallaMarvel-WallaMarvelUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WallaMarvel-WallaMarvelUITests.debug.xcconfig"; path = "Target Support Files/Pods-WallaMarvel-WallaMarvelUITests/Pods-WallaMarvel-WallaMarvelUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		B07DF4A661FBEFBDC6D96C2E /* Pods-WallaMarvelTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WallaMarvelTests.debug.xcconfig"; path = "Target Support Files/Pods-WallaMarvelTests/Pods-WallaMarvelTests.debug.xcconfig"; sourceTree = "<group>"; };
 		B40C4BB3B0477474BE5C2C4E /* Pods-WallaMarvel.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WallaMarvel.release.xcconfig"; path = "Target Support Files/Pods-WallaMarvel/Pods-WallaMarvel.release.xcconfig"; sourceTree = "<group>"; };
+		D3110AEC2DA9B2C6005F389B /* HeroDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroDetailView.swift; sourceTree = "<group>"; };
+		D3110B6A2DABC2F6005F389B /* APIConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConstants.swift; sourceTree = "<group>"; };
+		D3110B6F2DABC64B005F389B /* CharacterPreviewData.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = CharacterPreviewData.json; sourceTree = "<group>"; };
+		D3110B772DABC6E0005F389B /* 3d-man.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "3d-man.jpg"; sourceTree = "<group>"; };
+		D3110B7A2DABCA8E005F389B /* CharacterDataModel+Preview.swift .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CharacterDataModel+Preview.swift .swift"; sourceTree = "<group>"; };
 		D9A318E79FD19C1EE3A972A3 /* Pods_WallaMarvel_WallaMarvelUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WallaMarvel_WallaMarvelUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -151,9 +163,10 @@
 				1A0E3A982862F7E200132FCB /* AppDelegate.swift */,
 				1A0E3A9A2862F7E200132FCB /* SceneDelegate.swift */,
 				1A821EC42862FD470024D397 /* List Heroes */,
-				1A821EC52862FD500024D397 /* Detail Heroe */,
+				1A821EC52862FD500024D397 /* Detail Hero */,
 				1A821EC62862FD650024D397 /* Domain */,
 				1A821EC72862FD6E0024D397 /* Data */,
+				D3110B732DABC65C005F389B /* Resources */,
 				1A0E3AA12862F7E300132FCB /* Assets.xcassets */,
 				1A0E3AA32862F7E300132FCB /* LaunchScreen.storyboard */,
 				1A0E3AA62862F7E300132FCB /* Info.plist */,
@@ -190,11 +203,12 @@
 			path = "List Heroes";
 			sourceTree = "<group>";
 		};
-		1A821EC52862FD500024D397 /* Detail Heroe */ = {
+		1A821EC52862FD500024D397 /* Detail Hero */ = {
 			isa = PBXGroup;
 			children = (
+				D3110AEC2DA9B2C6005F389B /* HeroDetailView.swift */,
 			);
-			path = "Detail Heroe";
+			path = "Detail Hero";
 			sourceTree = "<group>";
 		};
 		1A821EC62862FD650024D397 /* Domain */ = {
@@ -211,6 +225,7 @@
 			children = (
 				1A821ED5286305590024D397 /* MarvelDataSource.swift */,
 				1A821EC82862FE3C0024D397 /* APIClient.swift */,
+				D3110B6A2DABC2F6005F389B /* APIConstants.swift */,
 				1A821ED2286302D40024D397 /* DataModel */,
 				1A821ECA2862FF910024D397 /* Helpers */,
 			);
@@ -221,6 +236,7 @@
 			isa = PBXGroup;
 			children = (
 				1A821ECB2862FF990024D397 /* String+MD5.swift */,
+				D3110B7A2DABCA8E005F389B /* CharacterDataModel+Preview.swift .swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -241,6 +257,15 @@
 				1AC0347E2863214900E93178 /* GetHeroes.swift */,
 			);
 			path = UseCases;
+			sourceTree = "<group>";
+		};
+		D3110B732DABC65C005F389B /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				D3110B772DABC6E0005F389B /* 3d-man.jpg */,
+				D3110B6F2DABC64B005F389B /* CharacterPreviewData.json */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		E6E551DC10F86994C93B46B1 /* Pods */ = {
@@ -367,6 +392,8 @@
 			files = (
 				1A0E3AA52862F7E300132FCB /* LaunchScreen.storyboard in Resources */,
 				1A0E3AA22862F7E300132FCB /* Assets.xcassets in Resources */,
+				D3110B702DABC64B005F389B /* CharacterPreviewData.json in Resources */,
+				D3110B782DABC6E0005F389B /* 3d-man.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -374,6 +401,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D3110B712DABC64B005F389B /* CharacterPreviewData.json in Resources */,
+				D3110B792DABC6E0005F389B /* 3d-man.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -494,8 +523,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D3110B7B2DABCA8E005F389B /* CharacterDataModel+Preview.swift .swift in Sources */,
 				1A821ED82863081A0024D397 /* MarvelRepository.swift in Sources */,
 				1A0E3A9D2862F7E200132FCB /* ListHeroesViewController.swift in Sources */,
+				D3110B6B2DABC2F6005F389B /* APIConstants.swift in Sources */,
 				1AC0347F2863214900E93178 /* GetHeroes.swift in Sources */,
 				1A7B9BBD286D81AA00EBC1A6 /* CharacterDataModel.swift in Sources */,
 				1A0E3A992862F7E200132FCB /* AppDelegate.swift in Sources */,
@@ -505,6 +536,7 @@
 				1A7B9BBF286D81B600EBC1A6 /* Thumbnail.swift in Sources */,
 				1A821EDA2863096C0024D397 /* ListHeroesPresenter.swift in Sources */,
 				1A0E3A9B2862F7E200132FCB /* SceneDelegate.swift in Sources */,
+				D3110AED2DA9B2C7005F389B /* HeroDetailView.swift in Sources */,
 				1A3B7326286ADD1E007BF626 /* ListHeroesTableView.swift in Sources */,
 				1A3B7328286ADEE6007BF626 /* ListHeroesTableViewCell.swift in Sources */,
 				1A821ED4286302EC0024D397 /* CharacterResponseDataModel.swift in Sources */,
@@ -684,7 +716,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -712,7 +744,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

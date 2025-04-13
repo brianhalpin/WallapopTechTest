@@ -6,13 +6,53 @@
 //
 
 import SwiftUI
+import Kingfisher
 
 struct HeroDetailView: View {
+    let hero: CharacterDataModel
+    let imageURL: URL
+    @State private var heroImage: UIImage? = nil
+
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        GeometryReader { geometry in
+            VStack(alignment: .leading, spacing: 10) {
+                KFImage(imageURL)
+                    .resizable()
+                    .placeholder {
+                        ProgressView()
+                    }
+                    .fade(duration: 0.3)
+                    .aspectRatio(contentMode: .fill)
+                    .frame(width: 120, height: 120)
+                    .clipShape(Circle())
+                    .overlay(
+                        Circle().stroke(.white, lineWidth: 2)
+                    )
+                    .shadow(radius: 7)
+
+                Text(hero.name)
+                    .font(.title)
+
+                Text(hero.description.isEmpty ? "No description available." : hero.description)
+
+                Spacer()
+            }
+            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
+            .padding()
+
+        }
     }
 }
 
 #Preview {
-    HeroDetailView()
+    do {
+        let hero = try CharacterDataModel.loadFromSimpleJSON(filename: "CharacterPreviewData.json")
+        if let imageURL = Bundle.main.url(forResource: "3d-man", withExtension: "jpg") {
+            return HeroDetailView(hero: hero, imageURL: imageURL)
+        } else {
+            return Text("Image not found")
+        }
+    } catch {
+        return Text("Error loading data: \(error.localizedDescription)")
+    }
 }
