@@ -36,7 +36,16 @@ final class ListHeroesViewController: UIViewController {
     private func setupUI() {
         title = viewModel.screenTitle()
         navigationItem.backButtonTitle = "Back"
-        
+
+        // Set up the search controller
+        let searchController = UISearchController(searchResultsController: nil)
+        searchController.searchResultsUpdater = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.placeholder = "Search Heroes"
+        navigationItem.searchController = searchController
+        definesPresentationContext = true
+
+        // Set up adapter and delegate
         listHeroesAdapter = ListHeroesAdapter(tableView: mainView.heroesTableView)
         mainView.heroesTableView.delegate = self
     }
@@ -46,7 +55,12 @@ final class ListHeroesViewController: UIViewController {
         viewModel.$heroes
             .receive(on: RunLoop.main)
             .sink { [weak self] heroes in
-                self?.listHeroesAdapter?.heroes = heroes
+                guard let self = self else { return }
+
+                let isSearching = !self.viewModel.searchText.isEmpty
+                let hasMoreData = self.viewModel.hasMoreDataAvailable
+                self.listHeroesAdapter?.showLoadingFooter = !isSearching && hasMoreData
+                self.listHeroesAdapter?.heroes = heroes
             }
             .store(in: &cancellables)
         
@@ -93,5 +107,11 @@ extension ListHeroesViewController: UITableViewDelegate {
         if offsetY > contentHeight - screenHeight - 200 {
             viewModel.loadHeroes()
         }
+    }
+}
+
+extension ListHeroesViewController: UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        viewModel.searchText = searchController.searchBar.text ?? ""
     }
 }

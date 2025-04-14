@@ -25,6 +25,7 @@ final class ListHeroesView: UIView {
     }
     
     private func setup() {
+        backgroundColor = .systemBackground
         addSubviews()
         addContraints()
     }

@@ -39,6 +39,9 @@
 		D3110BA92DACF995005F389B /* ListHeroesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3110BA82DACF995005F389B /* ListHeroesViewModel.swift */; };
 		D3110BAB2DACFB37005F389B /* ListHeroesFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3110BAA2DACFB37005F389B /* ListHeroesFactory.swift */; };
 		D3110BAD2DACFC8D005F389B /* HeroDetailInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3110BAC2DACFC8D005F389B /* HeroDetailInfo.swift */; };
+		D3110BAF2DAD4E06005F389B /* ListHeroesViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3110BAE2DAD4E06005F389B /* ListHeroesViewModelTests.swift */; };
+		D3110BB12DAD4F03005F389B /* MockDataHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3110BB02DAD4F03005F389B /* MockDataHelpers.swift */; };
+		D3110BB32DAD4FD6005F389B /* GetHeroesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3110BB22DAD4FD6005F389B /* GetHeroesTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -98,6 +101,9 @@
 		D3110BA82DACF995005F389B /* ListHeroesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListHeroesViewModel.swift; sourceTree = "<group>"; };
 		D3110BAA2DACFB37005F389B /* ListHeroesFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListHeroesFactory.swift; sourceTree = "<group>"; };
 		D3110BAC2DACFC8D005F389B /* HeroDetailInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroDetailInfo.swift; sourceTree = "<group>"; };
+		D3110BAE2DAD4E06005F389B /* ListHeroesViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListHeroesViewModelTests.swift; sourceTree = "<group>"; };
+		D3110BB02DAD4F03005F389B /* MockDataHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockDataHelpers.swift; sourceTree = "<group>"; };
+		D3110BB22DAD4FD6005F389B /* GetHeroesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetHeroesTests.swift; sourceTree = "<group>"; };
 		D9A318E79FD19C1EE3A972A3 /* Pods_WallaMarvel_WallaMarvelUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WallaMarvel_WallaMarvelUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -182,6 +188,9 @@
 			isa = PBXGroup;
 			children = (
 				1A0E3AAF2862F7E300132FCB /* WallaMarvelTests.swift */,
+				D3110BAE2DAD4E06005F389B /* ListHeroesViewModelTests.swift */,
+				D3110BB02DAD4F03005F389B /* MockDataHelpers.swift */,
+				D3110BB22DAD4FD6005F389B /* GetHeroesTests.swift */,
 			);
 			path = WallaMarvelTests;
 			sourceTree = "<group>";
@@ -556,6 +565,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D3110BB32DAD4FD6005F389B /* GetHeroesTests.swift in Sources */,
+				D3110BAF2DAD4E06005F389B /* ListHeroesViewModelTests.swift in Sources */,
+				D3110BB12DAD4F03005F389B /* MockDataHelpers.swift in Sources */,
 				1A0E3AB02862F7E300132FCB /* WallaMarvelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

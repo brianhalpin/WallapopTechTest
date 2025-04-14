@@ -8,15 +8,24 @@ final class ListHeroesAdapter: NSObject, UITableViewDataSource {
         }
     }
     
+    var showLoadingFooter: Bool = true {
+        didSet {
+            updateFooterVisibility()
+        }
+    }
+    
     private let tableView: UITableView
+    private let footerSpinner = UIActivityIndicatorView(style: .medium)
+    private let footerView: UIView
     
     init(tableView: UITableView) {
         self.tableView = tableView
+        // Set up the footer view
+        footerView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: 50))
         super.init()
+        
         self.tableView.dataSource = self
         
-        // Configure loading footer
-        let footerView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: 50))
         let spinner = UIActivityIndicatorView(style: .medium)
         
         spinner.translatesAutoresizingMaskIntoConstraints = false
@@ -29,6 +38,8 @@ final class ListHeroesAdapter: NSObject, UITableViewDataSource {
         
         spinner.startAnimating()
         tableView.tableFooterView = footerView
+        
+        updateFooterVisibility()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -41,4 +52,11 @@ final class ListHeroesAdapter: NSObject, UITableViewDataSource {
         cell.configure(model: model)
         return cell
     }
+    
+    private func updateFooterVisibility() {
+        Task { @MainActor in
+            self.tableView.tableFooterView = self.showLoadingFooter ? self.footerView : nil
+        }
+    }
+
 }

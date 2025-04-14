@@ -3,12 +3,11 @@
 //  WallaMarvel
 //
 //  Created by Brian Halpin on 13/04/2025.
-//
+//  
 
 import Foundation
 
-// Used to load a local file for Preview in SwiftUI.
-
+// Used to load a local file for Preview in SwiftUI
 extension CharacterDataModel {
     static func loadFromSimpleJSON(filename: String) throws -> CharacterDataModel {
         guard let fileURL = Bundle.main.url(forResource: filename, withExtension: nil) else {

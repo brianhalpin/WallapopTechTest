@@ -14,17 +14,36 @@ class ListHeroesViewModel {
     @Published private(set) var isLoading = false
     @Published private(set) var error: Error?
     
+    // Search
+    @Published var searchText: String = ""
+    private var allHeroes: [CharacterDataModel] = []
+    private var cancellables = Set<AnyCancellable>()
+    
     // Pagination
     private var currentOffset = 0
     private let limit = 20
     private var hasMoreData = true
+    
+    var hasMoreDataAvailable: Bool {
+        return hasMoreData
+    }
+
     
     // Dependencies
     private let getHeroesUseCase: GetHeroesUseCaseProtocol
     
     init(getHeroesUseCase: GetHeroesUseCaseProtocol = GetHeroes()) {
         self.getHeroesUseCase = getHeroesUseCase
+
+        $searchText
+            .debounce(for: .milliseconds(300), scheduler: RunLoop.main)
+            .removeDuplicates()
+            .sink { [weak self] _ in
+                self?.applySearchFilter()
+            }
+            .store(in: &cancellables)
     }
+
     
     func screenTitle() -> String {
         return "List of Heroes"
@@ -45,6 +64,7 @@ class ListHeroesViewModel {
                 self.hasMoreData = newHeroes.count == self.limit
                 
                 await MainActor.run {
+                    self.allHeroes.append(contentsOf: newHeroes)
                     self.heroes.append(contentsOf: newHeroes)
                     self.isLoading = false
                 }
@@ -65,4 +85,14 @@ class ListHeroesViewModel {
         
         return HeroDetailInfo(hero: hero, imageURL: imageUrl)
     }
+    
+    private func applySearchFilter() {
+        if searchText.isEmpty {
+            heroes = allHeroes
+        } else {
+            let lowercasedSearch = searchText.lowercased()
+            heroes = allHeroes.filter { $0.name.lowercased().contains(lowercasedSearch) }
+        }
+    }
+
 }

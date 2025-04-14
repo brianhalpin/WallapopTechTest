@@ -3,6 +3,13 @@ import UIKit
 import Kingfisher
 
 final class ListHeroesTableViewCell: UITableViewCell {
+    
+    private enum Constant {
+        static let padding: CGFloat = 12
+        static let imageSize: CGFloat = 80
+        static let textSpacing: CGFloat = 8
+    }
+    
     private let heroeImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -37,14 +44,14 @@ final class ListHeroesTableViewCell: UITableViewCell {
     
     private func addContraints() {
         NSLayoutConstraint.activate([
-            heroeImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 12),
-            heroeImageView.topAnchor.constraint(equalTo: topAnchor, constant: 12),
-            heroeImageView.heightAnchor.constraint(equalToConstant: 80),
-            heroeImageView.widthAnchor.constraint(equalToConstant: 80),
-            heroeImageView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -12),
+            heroeImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Constant.padding),
+            heroeImageView.topAnchor.constraint(equalTo: topAnchor, constant: Constant.padding),
+            heroeImageView.heightAnchor.constraint(equalToConstant: Constant.imageSize),
+            heroeImageView.widthAnchor.constraint(equalToConstant: Constant.imageSize),
+            heroeImageView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -Constant.padding),
             
-            heroeName.leadingAnchor.constraint(equalTo: heroeImageView.trailingAnchor, constant: 12),
-            heroeName.topAnchor.constraint(equalTo: heroeImageView.topAnchor, constant: 8),
+            heroeName.leadingAnchor.constraint(equalTo: heroeImageView.trailingAnchor, constant: Constant.padding),
+            heroeName.topAnchor.constraint(equalTo: heroeImageView.topAnchor, constant: Constant.textSpacing),
         ])
     }
     
