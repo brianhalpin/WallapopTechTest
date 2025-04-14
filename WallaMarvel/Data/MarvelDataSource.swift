@@ -1,7 +1,7 @@
 import Foundation
 
 protocol MarvelDataSourceProtocol {
-    func getHeroes() async throws -> CharacterDataContainer
+    func getHeroes(offset: Int, limit: Int) async throws -> CharacterDataContainer
 }
 
 final class MarvelDataSource: MarvelDataSourceProtocol {
@@ -11,8 +11,8 @@ final class MarvelDataSource: MarvelDataSourceProtocol {
         self.apiClient = apiClient
     }
 
-    func getHeroes() async throws -> CharacterDataContainer {
-        try await apiClient.getHeroes(offset: 0, limit: 20)
+    func getHeroes(offset: Int, limit: Int) async throws -> CharacterDataContainer {
+        try await apiClient.getHeroes(offset: offset, limit: limit)
     }
 }
 

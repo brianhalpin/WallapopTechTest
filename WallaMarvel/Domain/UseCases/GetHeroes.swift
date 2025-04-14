@@ -1,7 +1,7 @@
 import Foundation
 
 protocol GetHeroesUseCaseProtocol {
-    func execute() async throws -> CharacterDataContainer
+    func execute(offset: Int, limit: Int) async throws -> CharacterDataContainer
 }
 
 struct GetHeroes: GetHeroesUseCaseProtocol {
@@ -11,7 +11,7 @@ struct GetHeroes: GetHeroesUseCaseProtocol {
         self.repository = repository
     }
 
-    func execute() async throws -> CharacterDataContainer {
-        try await repository.getHeroes()
+    func execute(offset: Int = 0, limit: Int = 20) async throws -> CharacterDataContainer {
+        try await repository.getHeroes(offset: offset, limit: limit)
     }
 }

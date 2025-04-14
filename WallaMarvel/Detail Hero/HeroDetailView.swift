@@ -11,7 +11,6 @@ import Kingfisher
 struct HeroDetailView: View {
     let hero: CharacterDataModel
     let imageURL: URL
-    @State private var heroImage: UIImage? = nil
 
     var body: some View {
         GeometryReader { geometry in
