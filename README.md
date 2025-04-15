@@ -25,9 +25,8 @@ The application primarily follows the **Model-View-ViewModel (MVVM)** architectu
 
 ## Features Implemented
 
-* **Hero List Display:** Fetches and displays a list of Marvel characters in a `UITableView`.
-* **Infinite Scrolling / Pagination:** Automatically fetches the next batch of heroes when the user scrolls near the bottom of the list. Logic is handled within the `ListHeroesViewModel`.
 * **Hero Detail View:** Navigates to a SwiftUI view showing more details (name, image, description) for a selected hero. Data is passed from the list, avoiding an additional network request.
+* **Infinite Scrolling / Pagination:** Automatically fetches the next batch of heroes when the user scrolls near the bottom of the list. Logic is handled within the `ListHeroesViewModel`.
 * **Search Functionality:** Includes a `UISearchController` allowing users to filter the list of heroes by name. Filtering logic is debounced and handled within the `ListHeroesViewModel`.
 
 ## Code Quality & Conventions
